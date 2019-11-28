@@ -14,7 +14,7 @@ import java.util.List;
 public class DBHandler extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "HR_Incident.db";
-    public static final String TABLE_NAME = "tbl_IncidentHistory";
+    public static final String TABLE_INCI_HISTORY = "tbl_IncidentHistory";
 
     public static final String TABLE_BodyParts = "tbl_BodyParts";
 
@@ -32,7 +32,8 @@ public class DBHandler extends SQLiteOpenHelper {
     public static final String DEPARTMENT = "DEPARTMENT";
     public static final String POSITION = "POSITION";
     public static final String INCITYPE = "INCITYPE";
-    //public static final String COURSE = "COURSE";
+
+    public static final String INCIBODYPARTS = "INCIBODYPARTS";
     //SQLiteDatabase db =this.getWritableDatabase();
     DBHandler(Context context)
     {
@@ -50,14 +51,15 @@ public class DBHandler extends SQLiteOpenHelper {
         createBodyParts(db);
         createEmployee(db);
 
-        String CREATE_TABLE = ("Create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT ,DATE TEXT," +
+        String CREATE_TABLE = ("Create table " + TABLE_INCI_HISTORY + "(ID INTEGER PRIMARY KEY AUTOINCREMENT ,DATE TEXT," +
                 "NUMBER TEXT," +
                 "NAME TEXT," +
                 "GENDER TEXT," +
                 "SHIFT TEXT,"+
                 "DEPARTMENT TEXT,"+
                 "POSITION TEXT,"+
-                "INCITYPE TEXT)");
+                "INCITYPE TEXT,"+
+                "INCIBODYPARTS TEXT)");
         db.execSQL(CREATE_TABLE);
 
     }
@@ -182,4 +184,34 @@ public class DBHandler extends SQLiteOpenHelper {
 
       }
 
+
+      public  boolean  saveReport(ReportData rpd)
+      {
+
+        // ReportData rpd = new ReportData();
+         SQLiteDatabase db = this.getWritableDatabase();
+         ContentValues myvalues = new ContentValues();
+         String a = rpd.getName();
+         myvalues.put(DATE,rpd.getDate());
+         myvalues.put(NUMBER ,rpd.getNumber());
+         myvalues.put(NAME,rpd.getName());
+         myvalues.put(GENDER,rpd.getGender());
+         myvalues.put(SHIFT,rpd.getShift());
+         myvalues.put(DEPARTMENT,rpd.getDepartment());
+         myvalues.put(POSITION,rpd.getPosition());
+         myvalues.put(INCITYPE,rpd.getIncidentType());
+         myvalues.put(INCIBODYPARTS,rpd.getIncidentBodyParts());
+
+
+        long result = db.insert(TABLE_INCI_HISTORY,null,myvalues);
+        if(result == -1)
+        {
+           return false;
+        }
+
+        else
+        {
+            return true;
+        }
+      }
 }

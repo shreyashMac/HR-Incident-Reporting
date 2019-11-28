@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -32,7 +33,7 @@ public class ReportIncident extends AppCompatActivity {
     Button btnReport;
 
     ImageButton search;
-    ReportData mydata;
+   // ReportData mydata;
 
     List<String> myShifts,myIncidentTypes,myBodyParts;
 
@@ -136,32 +137,35 @@ public class ReportIncident extends AppCompatActivity {
           }
       });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      //  Toast.makeText(ReportIncident.this,myEmpName.toString(),Toast.LENGTH_LONG).show();
-
-
-
-
-
         btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                boolean check;
 
-                Toast.makeText(ReportIncident.this,myBodyParts.toString(),Toast.LENGTH_LONG).show();
+                check = myRpData.checkData();
+                if(check == true)
+                {
+                    boolean flag = reportHandler.saveReport(myRpData);
+                    if(flag == true)
+                    {
+                        Toast.makeText(ReportIncident.this,"Report Generated Successfully",Toast.LENGTH_LONG).show();
+                    }
+                    else
+                        {
+                            Toast.makeText(ReportIncident.this,"ERROR While Generating",Toast.LENGTH_LONG).show();
+                        }
+                }
+
+                else {
+                    Toast.makeText(ReportIncident.this,"Please Fill Empty Fields",Toast.LENGTH_LONG).show();
+
+                }
+
+
+
+
+
+
             }
         });
 
@@ -219,13 +223,13 @@ public class ReportIncident extends AppCompatActivity {
            // String mycredit;
             if(rbMale.isChecked())
             {
-                mydata.setGender("Male");
+                myRpData.setGender("Male");
 
 
             }
             else if(rbFemale.isChecked())
             {
-                mydata.setGender("Female");
+                myRpData.setGender("Female");
 
             }
     }

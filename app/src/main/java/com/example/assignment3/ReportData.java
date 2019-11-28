@@ -1,19 +1,22 @@
 package com.example.assignment3;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 public class ReportData {
 
    private int id;
-   private String number;
-   private String date;
-   private String name;
-   private String gender;
-   private String shift;
-   private String department;
-   private String position;
-   private String incidentType;
-   private String incidentBodyParts;
+   private String number="";
+   private String date="";
+   private String name="";
+   private String gender="";
+   private String shift="";
+   private String department="";
+   private String position="";
+   private String incidentType="";
+   private String incidentBodyParts="";
+
+
 
     public int getId() {
         return id;
@@ -94,4 +97,16 @@ public class ReportData {
     public void setIncidentBodyParts(String incidentBodyParts) {
         this.incidentBodyParts = incidentBodyParts;
     }
+
+ public boolean checkData()
+ {
+     if(!number.equals("") && !name.equals("") && !gender.equals("") && !shift.equals("")
+         && !department.equals("") && !position.equals("") && !incidentType.equals("") && !incidentBodyParts.equals(""))
+     {
+         return  true;
+     }
+     else {return false;}
+
+ }
+
 }
