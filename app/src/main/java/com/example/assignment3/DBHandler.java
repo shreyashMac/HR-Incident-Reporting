@@ -191,7 +191,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // ReportData rpd = new ReportData();
          SQLiteDatabase db = this.getWritableDatabase();
          ContentValues myvalues = new ContentValues();
-         String a = rpd.getName();
+   //      String a = rpd.getName();
          myvalues.put(DATE,rpd.getDate());
          myvalues.put(NUMBER ,rpd.getNumber());
          myvalues.put(NAME,rpd.getName());
