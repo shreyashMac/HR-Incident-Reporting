@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Assignment3</string>
+    <string-array name="shifts">
+        <item>Shift A</item>
+        <item>Shift B</item>
+        <item>Shift C</item>
+    </string-array>
+
+    <string-array name="IncidentType">
+        <item>Near Miss</item>
+        <item>First Aid</item>
+        <item>Medical Aid</item>
+
+
+    </string-array>
+</resources>

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReportIncident">
+
+    <LinearLayout
+        android:id="@+id/titlelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HR Incident Reporting"
+            android:fontFamily="monospace"
+            android:textSize="30dp"
+           android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_below="@id/titlelayout"
+        android:id="@+id/coredata"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+
+
+        <LinearLayout
+
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Incident ID"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/edID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+
+                android:hint="ID"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/layout1"
+            android:id="@+id/layout2"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/inciDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/eddate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:inputType="none"
+                    android:hint="Incident Date"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/layout2"
+            android:id="@+id/layout3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/ednumber"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+
+                android:hint="Employee Number"/>
+            <ImageButton
+                android:id="@+id/search"
+                android:layout_width="48dp"
+                android:layout_height="40dp"
+                android:background=""
+                android:src="@drawable/search"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/layout3"
+            android:id="@+id/layout4"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/empname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/edname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:hint="Employee Name"/>
+        </LinearLayout>
+
+       </LinearLayout>
+    <RadioGroup
+
+        android:id="@+id/myradio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/coredata"
+
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="20dp">
+        </TextView>
+
+
+        <RadioButton
+            android:id="@+id/rbmale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:onClick="getGender"
+            android:text="Male">
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/rbfemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:onClick="getGender"
+            android:text="Female">
+
+        </RadioButton>
+    </RadioGroup>
+    <LinearLayout
+        android:id="@+id/spinnerlayout"
+        android:layout_below="@id/myradio"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/shift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Shift"
+            android:textSize="20dp"
+            >
+
+        </TextView>
+
+        <Spinner
+            android:id="@+id/spinshift"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/layout5"
+        android:layout_below="@id/spinnerlayout"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/iddepartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Department"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"/>
+
+        <EditText
+            android:id="@+id/eddepartment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="Department"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout5"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layout6"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/idPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Position"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"/>
+
+        <EditText
+            android:id="@+id/edPosition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
+            android:hint="Position"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/layout6">
+
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/incittype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Incident Type"
+            android:textSize="20dp"
+            >
+
+        </TextView>
+
+        <Spinner
+            android:id="@+id/spinIncident"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_marginLeft="10dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout8"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/layout7">
+
+
+        <TextView
+            android:id="@+id/incibody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Incident Body Part"
+            android:textSize="20dp"
+            >
+
+        </TextView>
+
+        <Spinner
+            android:id="@+id/spinInjured"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_marginLeft="10dp"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/report"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/layout8"
+        android:layout_marginTop="39dp"
+        android:text="REPORT"
+        android:textSize="35dp"
+
+        android:layout_marginLeft="70dp"
+       android:layout_marginStart="80dp"
+        android:typeface="monospace" />
+
+
+</RelativeLayout>
