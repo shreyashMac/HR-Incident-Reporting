@@ -84,7 +84,7 @@ public class ReportIncident extends AppCompatActivity {
 
 
 
-      myShiftAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,myShifts);
+      myShiftAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_item,myShifts);
       myShiftAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
       spinShift.setAdapter(myShiftAdapter);
 
@@ -110,6 +110,27 @@ public class ReportIncident extends AppCompatActivity {
               myRpData.setNumber(myNumber.getText().toString().trim());
 
                     Cursor mycursor = reportHandler.getEmployee(myRpData.getNumber());
+
+                   // StringBuffer myBuffer = new StringBuffer();
+                    while(mycursor.moveToNext())
+                    {
+                     /* myBuffer.append(mycursor.getString(0));
+                      myBuffer.append(mycursor.getString(1));
+                      myBuffer.append(mycursor.getString(2));
+                      myBuffer.append(mycursor.getString(3));
+                      myBuffer.append(mycursor.getString(4));*/
+
+                     myRpData.setName(mycursor.getString(1));
+                     myRpData.setDepartment(mycursor.getString(3));
+                     myRpData.setPosition(mycursor.getString(4));
+                    }
+
+                    myName.setText(myRpData.getName());
+                    myDepartment.setText(myRpData.getDepartment());
+                    myPosition.setText(myRpData.getPosition());
+
+                   // Toast.makeText(ReportIncident.this,myBuffer.toString(),Toast.LENGTH_LONG).show();
+
 
 
           }

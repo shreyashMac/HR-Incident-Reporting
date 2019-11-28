@@ -40,12 +40,13 @@ public class DBHandler extends SQLiteOpenHelper {
         //SQLiteOpenHelper sqLiteOpenHelper =this.getWritableDatabase();
        //
         //
-      // SQLiteDatabase db =this.getWritableDatabase();
+        // SQLiteDatabase db =this.getWritableDatabase();
 
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+      //  db= this.getWritableDatabase();
         createBodyParts(db);
         createEmployee(db);
 
@@ -106,7 +107,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     public void empData(SQLiteDatabase mydb) {
-        List<String> empList = new ArrayList<>();
+       /* List<String> empList = new ArrayList<>();
         empList.add("Shreyash");
         empList.add("Sparsh");
         empList.add("Hardik");
@@ -138,9 +139,19 @@ public class DBHandler extends SQLiteOpenHelper {
             myvalues.put(DEPARTMENT, empPosition.get(i));
             mydb.insert(TABLE_Employee, null, myvalues);
 
-        }
+        }*/
+
+        ContentValues myvalues = new ContentValues();
+        //storing all user values in  ContentValues object
+        myvalues.put(NAME, "Shreyash");
+        //  myvalues.put(ID, id);
+        myvalues.put(NUMBER, "EMP101");
+        myvalues.put(DEPARTMENT, "HR");
+        myvalues.put(POSITION, "Coder");
+        //myvalues.put(, course);
 
 
+        mydb.insert(TABLE_Employee, null, myvalues);
 
 
 
@@ -161,12 +172,12 @@ public class DBHandler extends SQLiteOpenHelper {
       public Cursor getEmployee(String number)
       {
           //Table columns Array
-          String[] columns = {ID,NAME,NUMBER};
+          String[] columns = {ID,NAME,NUMBER,DEPARTMENT,POSITION};
 
           SQLiteDatabase db = this.getWritableDatabase();
 
           //query database using specific Course.
-          Cursor cursor = db.query(TABLE_Employee,columns,"NAME = ?",new String[]{number},null,null,null);
+          Cursor cursor = db.query(TABLE_Employee,columns,"NUMBER = ?",new String[]{number},null,null,null);
           return cursor;
 
       }
