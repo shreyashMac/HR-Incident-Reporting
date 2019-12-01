@@ -189,7 +189,7 @@ public class DBHandler extends SQLiteOpenHelper {
       {
 
         // ReportData rpd = new ReportData();
-         SQLiteDatabase db = this.getWritableDatabase();
+         SQLiteDatabase mydb = this.getWritableDatabase();
          ContentValues myvalues = new ContentValues();
    //      String a = rpd.getName();
          myvalues.put(DATE,rpd.getDate());
@@ -203,7 +203,7 @@ public class DBHandler extends SQLiteOpenHelper {
          myvalues.put(INCIBODYPARTS,rpd.getIncidentBodyParts());
 
 
-        long result = db.insert(TABLE_INCI_HISTORY,null,myvalues);
+        long result = mydb.insert(TABLE_INCI_HISTORY,null,myvalues);
         if(result == -1)
         {
            return false;
