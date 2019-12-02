@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,11 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -146,13 +152,23 @@ public class ReportIncident extends AppCompatActivity {
                 check = myRpData.checkData();
                 if(check == true)
                 {
+
+
+                    //Screen shot capturing
+                        takeScreenShot();
+
+
+
+
+
                     boolean flag = reportHandler.saveReport(myRpData);
                     if(flag == true)
                     {
-                        Bitmap b = Screenshot.takescreenshotOfRootView(getWindow().getDecorView().getRootView());
+
                         
-//                        imageView.setImageBitmap(b);
-//                        main.setBackgroundColor(Color.parseColor("#999999"));
+//                        //imageView.setImageBitmap(b);
+//                        //main.setBackgroundColor(Color.parseColor("#999999"));
+
                         Toast.makeText(ReportIncident.this,"Report Generated Successfully",Toast.LENGTH_LONG).show();
                     }
                     else
@@ -259,6 +275,35 @@ public class ReportIncident extends AppCompatActivity {
                cursor.moveToNext();
            }
        }
+    }
+
+
+    public void takeScreenShot() {
+
+        try {
+
+            String mPath = Environment.getExternalStorageDirectory().toString() + "/"  + ".jpg";
+
+
+            View v1 = getWindow().getDecorView().getRootView();
+            v1.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+            v1.setDrawingCacheEnabled(false);
+
+            File imageFile = new File(mPath);
+
+            FileOutputStream outputStream = new FileOutputStream(imageFile);
+            int quality = 100;
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+            outputStream.flush();
+            outputStream.close();
+
+
+        } catch (Throwable e) {
+            // Several error may come out with file handling or DOM
+            e.printStackTrace();
+        }
+
     }
 
 }
