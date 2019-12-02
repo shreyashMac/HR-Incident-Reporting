@@ -156,7 +156,17 @@ public class DBHandler extends SQLiteOpenHelper {
         mydb.insert(TABLE_Employee, null, myvalues);
 
 
+        ContentValues myvalues1 = new ContentValues();
+        //storing all user values in  ContentValues object
+        myvalues1.put(NAME, "Sparsh");
+        //  myvalues.put(ID, id);
+        myvalues1.put(NUMBER, "EMP102");
+        myvalues1.put(DEPARTMENT, "HR");
+        myvalues1.put(POSITION, "Coder");
+        //myvalues.put(, course);
 
+
+        mydb.insert(TABLE_Employee, null, myvalues1);
 
     }
 

@@ -3,6 +3,7 @@ package com.example.assignment3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -148,6 +149,10 @@ public class ReportIncident extends AppCompatActivity {
                     boolean flag = reportHandler.saveReport(myRpData);
                     if(flag == true)
                     {
+                        Bitmap b = Screenshot.takescreenshotOfRootView(getWindow().getDecorView().getRootView());
+                        
+//                        imageView.setImageBitmap(b);
+//                        main.setBackgroundColor(Color.parseColor("#999999"));
                         Toast.makeText(ReportIncident.this,"Report Generated Successfully",Toast.LENGTH_LONG).show();
                     }
                     else
