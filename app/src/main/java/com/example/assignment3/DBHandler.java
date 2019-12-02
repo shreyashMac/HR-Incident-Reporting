@@ -214,4 +214,12 @@ public class DBHandler extends SQLiteOpenHelper {
             return true;
         }
       }
+
+    public Cursor showRecords(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cr = db.rawQuery("select  * FROM " + TABLE_INCI_HISTORY, null);
+
+        return cr;
+
+    }
 }
